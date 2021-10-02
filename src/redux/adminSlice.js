@@ -11,7 +11,7 @@ const initialState = {
 //reducer function
 export default function adminReducer(state = initialState, action) {
   switch (action.type) {
-    case "admin/dataFetched": {
+    case "admin/adminFetched": {
       return {
         ...state,
         adminData: action.payload,

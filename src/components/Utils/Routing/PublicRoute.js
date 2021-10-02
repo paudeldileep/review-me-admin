@@ -8,7 +8,7 @@ const PublicRoute = ({component:Component,...rest}) =>{
     const isAuthenticated=useSelector(state=>state.admin.isAuthenticated)
 
     return(
-    <Route {...rest} render={props => isAuthenticated ? (<Redirect to="/" />):(<Component {...props}/>)}/>
+    <Route {...rest} render={props => isAuthenticated ? (<Redirect to="/dashboard" />):(<Component {...props}/>)}/>
     )
 };
 

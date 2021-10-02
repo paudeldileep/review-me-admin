@@ -11,8 +11,8 @@ import { fetchAdmin } from "./redux/adminSlice";
 
 //initial user setup
 
-if (localStorage.user_token) {
-  setAuthToken(localStorage.user_token);
+if (localStorage.admin_token) {
+  setAuthToken(localStorage.admin_token);
   store.dispatch(fetchAdmin());
 }
 
