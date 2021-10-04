@@ -19,7 +19,7 @@ const Dashboard = () => {
       <aside className="w-1/12 min-w-max md:w-1/5 border rounded-md border-purple-500">
         <Sidebar url={url} />
       </aside>
-      <div className="w-full flex-1 mx-1 rounded-md min-h-screen border border-red-400">
+      <div className="w-full flex-1 mx-1 px-2 py-1 rounded-md min-h-screen border border-red-400">
         <Switch>
           <Route exact path={`${path}/overview`} component={Overview}/>
           <Route exact path={`${path}/users`} component={Users}/>

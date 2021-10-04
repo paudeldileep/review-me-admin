@@ -19,6 +19,7 @@ function App() {
           {/* <Route exact path="/" component={Index} /> */}
           <PublicRoute exact path="/" component={Login} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          {/* <Route exact path="/dashboard" component={Dashboard}/> */}
           <Route path="*">
             <Redirect to="/" />
           </Route>
