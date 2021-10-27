@@ -4,6 +4,7 @@ import Navbar from "../../components/Navbar";
 import Sidebar from "../../components/Sidebar";
 import Overview from "../../components/MainContent/Overview";
 import Users from "../../components/MainContent/Users";
+import Products from "../../components/MainContent/Products";
 
 const Dashboard = () => {
   const { path, url } = useRouteMatch();
@@ -23,6 +24,7 @@ const Dashboard = () => {
         <Switch>
           <Route exact path={`${path}/overview`} component={Overview}/>
           <Route exact path={`${path}/users`} component={Users}/>
+          <Route exact path={`${path}/products`} component={Products}/>
             
           <Route exact path={`${path}`}>
             <Redirect to="/dashboard/overview" />

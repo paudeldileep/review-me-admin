@@ -14,7 +14,7 @@ import Dashboard from './pages/Home/Dashboard';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen w-full mx-1 bg-gray-200">
+      <div className="min-h-screen w-full px-1 bg-gray-200">
         <Switch>
           {/* <Route exact path="/" component={Index} /> */}
           <PublicRoute exact path="/" component={Login} />
