@@ -1,42 +1,40 @@
-import { faEdit, faTrashAlt } from "@fortawesome/free-regular-svg-icons";
+import { faEdit, faTrashAlt } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useEffect } from 'react';
+import { useFetchHelper } from '../../../utils/useFetchHelper';
+import BasicLoader from '../../Utils/UI/BasicLoader';
+import { TimeAgo } from '../../Utils/UI/TimeAgo';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { useEffect } from "react";
-import { useFetchHelper } from "../../../utils/useFetchHelper";
-import BasicLoader from "../../Utils/UI/BasicLoader";
-
-import { TimeAgo } from "../../Utils/UI/TimeAgo";
-
-const ProductsList = () => {
-  const [response, setResponse] = useFetchHelper("admin/all_pr");
+const UserList = () => {
+    const [response, setResponse] = useFetchHelper("admin/users");
 
   useEffect(() => {
-    setResponse("admin/all_pr");
+    setResponse("admin/users");
   }, []);
 
   // const AllProducts= response.data && response.data.filter(product=>product.isApproved)
-
+  console.log(response)
   const allProductsRenderer =
     response.data &&
-    response.data.map((product) => (
-      <tr key={product._id} className="rounded-md py-1 bg-gray-300">
-        <td className="p-1 text-purple-500 font-semibold text-lg">{product.title}</td>
-        <td className="p-1">{product.description.substring(0,50)}...</td>
+    response.data.map((user,index) => (
+      <tr key={user._id} className="rounded-md py-1 bg-gray-300">
+        <td className="p-1 text-purple-500 font-semibold text-lg">{index+1}</td>
+        <td className="p-1 ">{user.firstname}</td>
         <td className="p-1">
-          <img
+          {/* <img
             src={product.productImage}
             alt={product.title}
             className="h-8 w-8 rounded-lg"
-          />
+          /> */}
+          user image
         </td>
         <td className="p-1 text-xs">
           <div>
-            {" "}
+           
             <h4>
-              By:{product.postedBy.firstname} {product.postedBy.lastname}
+            <TimeAgo timestamp={user.created} />
             </h4>
-            <p>posted:<TimeAgo timestamp={product.posted}/></p>
+            
           </div>
         </td>
         <td className="p-1">
@@ -57,11 +55,11 @@ const ProductsList = () => {
         <table className="w-full text-sm space-y-4">
           <thead className="my-1 p-1 bg-gray-400 rounded-md shadow-sm">
             <tr>
-              <th className="p-1">Title</th>
-              <th className="p-1">Desc</th>
-              <th className="p-1">Image</th>
+              <th className="p-1 text-left">SN</th>
+              <th className="p-1 text-left">Basics</th>
+              <th className="p-1 text-left">Products</th>
               <th className="p-1">Remarks</th>
-              <th className="p-1">Actions</th>
+              <th className="p-1 ">Actions</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-200">{allProductsRenderer}</tbody>
@@ -69,6 +67,6 @@ const ProductsList = () => {
       )}
     </div>
   );
-};
+}
 
-export default ProductsList;
+export default UserList;
