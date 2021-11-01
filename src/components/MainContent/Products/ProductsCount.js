@@ -1,16 +1,11 @@
 import { faCalendarCheck, faCertificate, faCheck, faLayerGroup } from "@fortawesome/free-solid-svg-icons";
 import React from "react";
-import { useEffect } from "react";
-import { useFetchHelper } from "../../../utils/useFetchHelper";
+
 import Count from "../../Helpers/Count";
 
-const ProductsCount = () => {
+const ProductsCount = ({response}) => {
 
-    const[response,setResponse]=useFetchHelper('admin/count')
-
-    useEffect(()=>{
-        setResponse('admin/count')
-    },[])
+   
 
   return <div className="w-full h-auto flex flex-wrap justify-between mx-2">
      <Count isLoading={response.isLoading} title="Total Products" titleIcon={faLayerGroup} countValue={response.data?.totalProducts}/>

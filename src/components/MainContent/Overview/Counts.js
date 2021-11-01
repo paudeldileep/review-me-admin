@@ -53,7 +53,7 @@ const Counts = () => {
           </>
         )}
       </div> */}
-      <Count isLoading={response.isLoading} title="Featured Item" titleIcon={faCertificate} countValue="23"/>
+      <Count isLoading={response.isLoading} title="Featured Item" titleIcon={faCertificate} countValue={response.data?.featuredProducts}/>
     </div>
   );
 };

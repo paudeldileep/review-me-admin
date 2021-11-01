@@ -11,11 +11,15 @@ import {
 } from "@heroicons/react/outline";
 import { mainNavigationLinks } from "../../utils/navigation";
 import { Link, NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { selectAdminData } from "../../redux/adminSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { adminSignOut, selectAdminData } from "../../redux/adminSlice";
 
 const Navbar = ({ url }) => {
   const admin = useSelector(selectAdminData);
+  const dispatch = useDispatch();
+  const handleSignOut = () => {
+    dispatch(adminSignOut());
+  };
 
   return (
     <div className="w-full h-full">
@@ -106,6 +110,7 @@ const Navbar = ({ url }) => {
                                   active ? "bg-gray-100" : "",
                                   "block px-4 py-2 text-sm text-gray-700 w-full text-left"
                                 )}
+                                onClick={handleSignOut}
                               >
                                 <p className="flex items-center justify-start">
                                   <LogoutIcon className="h-5 w-5 text-red-400 mr-1" />
@@ -183,9 +188,7 @@ const Navbar = ({ url }) => {
                     <span>Settings</span>
                   </p>
                 </Link>
-                <button
-                  className="mt-2"
-                >
+                <button className="mt-2">
                   <p className="flex items-center justify-start">
                     <LogoutIcon className="h-5 w-5 text-red-400 mr-1" />
                     <span>Sign Out</span>
