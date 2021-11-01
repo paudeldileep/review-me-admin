@@ -21,21 +21,34 @@ const MonthlyPlot = () => {
 
   console.log(response);
 
-  return <>{!response.data ? <BasicLoader/> :<> <h2 className="text-center text-purple-900 font-bold text-lg">Monthly Products Count</h2><ResponsiveContainer width="90%" height="90%">
-    <LineChart
-      width={500}
-      height={150}
-      data={response.data}
-      margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
-    >
-      <Line type="monotone" dataKey="totalProducts" stroke="#8884d8" />
-      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-      <XAxis dataKey={`_id.month`} />
-      <YAxis />
-      <Tooltip />
-    </LineChart>
-  </ResponsiveContainer></>}
-  </>
+  return (
+    <>
+      {!response.data ? (
+        <BasicLoader />
+      ) : (
+        <>
+          {" "}
+          <h2 className="text-center text-purple-900 font-bold text-lg">
+            Monthly Products Count
+          </h2>
+          <ResponsiveContainer width="90%" height="90%">
+            <LineChart
+              width={500}
+              height={150}
+              data={response.data}
+              margin={{ top: 5, right: 20, bottom: 5, left: 0 }}
+            >
+              <Line type="monotone" dataKey="totalProducts" stroke="#8884d8" />
+              <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+              <XAxis dataKey={`_id.month`} />
+              <YAxis />
+              <Tooltip />
+            </LineChart>
+          </ResponsiveContainer>
+        </>
+      )}
+    </>
+  );
 };
 
 export default MonthlyPlot;

@@ -17,7 +17,8 @@ export default function productReducer(state = initialState, action) {
         error: null,
       };
     }
-    case "product/update":case "product/delete": {
+    case "product/update":
+    case "product/delete": {
       return {
         ...state,
         message: action.payload,
@@ -68,19 +69,19 @@ export const approveProduct = (productId) => async (dispatch) => {
 
 //2. delete a product listing
 export const deleteProduct = (productId) => async (dispatch) => {
-    dispatch(loading());
-    axios
-      .delete(`/admin/product/${productId}`)
-      .then((res) => dispatch(productDeleted(res.data)))
-      .catch((err) => console.log(err.response.data));
-  };
+  dispatch(loading());
+  axios
+    .delete(`/admin/product/${productId}`)
+    .then((res) => dispatch(productDeleted(res.data)))
+    .catch((err) => console.log(err.response.data));
+};
 
 //3. set featured/ remove featured product
 
-export const setFeatured=(productId)=> async(dispatch)=>{
+export const setFeatured = (productId) => async (dispatch) => {
   dispatch(loading());
-    axios
-      .post(`/admin/product/featured/${productId}`)
-      .then((res) => dispatch(productUpdated(res.data)))
-      .catch((err) => console.log(err.response.data));
-  };
+  axios
+    .post(`/admin/product/featured/${productId}`)
+    .then((res) => dispatch(productUpdated(res.data)))
+    .catch((err) => console.log(err.response.data));
+};

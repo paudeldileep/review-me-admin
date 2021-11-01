@@ -2,7 +2,6 @@ import { faTrashAlt } from "@fortawesome/free-regular-svg-icons";
 import {
   faCertificate,
   faCheck,
-  faEdit,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -30,7 +29,7 @@ const ProductsList = (props) => {
 
   const message = useSelector((state) => state.product.message);
   const error = useSelector((state) => state.product.error);
-  const status = useSelector((state) => state.product.status);
+  // const status = useSelector((state) => state.product.status);
   const [allProducts, setAllProducts] = useFetchHelper("admin/all_pr");
   const [approvedProducts, setApprovedProducts] =
     useFetchHelper("admin/approved_pr");
@@ -157,13 +156,17 @@ const ProductsList = (props) => {
         <td className="p-1">
           <div className="flex justify-around flex-nowrap">
             <button
-              title={product.isFeatured ? 'Remove Featured' : 'Set Featured'}
+              title={product.isFeatured ? "Remove Featured" : "Set Featured"}
               onClick={() => handleFeatured(product._id)}
               className="mx-1"
             >
               <FontAwesomeIcon
                 icon={faCertificate}
-                className={classNames ('h-8 w-8', product.isFeatured ? 'text-purple-500' : 'text-purple-300', 'transition-transform transform hover:scale-110')}
+                className={classNames(
+                  "h-8 w-8",
+                  product.isFeatured ? "text-purple-500" : "text-purple-300",
+                  "transition-transform transform hover:scale-110"
+                )}
               />
             </button>
             <button

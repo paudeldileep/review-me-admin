@@ -1,12 +1,13 @@
-import React from 'react';
-import UserList from './UserList';
+import React from "react";
+import UserList from "./UserList";
 
 const Users = () => {
-    return (
-        <div className="w-full h-full">Users
-        <UserList/>
-        </div>
-    );
-}
+  return (
+    <div className="w-full h-full">
+      Users
+      <UserList />
+    </div>
+  );
+};
 
 export default Users;

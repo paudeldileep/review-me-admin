@@ -1,15 +1,14 @@
-
-import './App.css';
+import "./App.css";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
 } from "react-router-dom";
-import PublicRoute from './components/Utils/Routing/PublicRoute';
-import PrivateRoute from './components/Utils/Routing/PrivateRoute';
-import Login from './pages/Index/Login';
-import Dashboard from './pages/Home/Dashboard';
+import PublicRoute from "./components/Utils/Routing/PublicRoute";
+import PrivateRoute from "./components/Utils/Routing/PrivateRoute";
+import Login from "./pages/Index/Login";
+import Dashboard from "./pages/Home/Dashboard";
 
 function App() {
   return (

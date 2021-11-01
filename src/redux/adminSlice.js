@@ -42,8 +42,8 @@ export default function adminReducer(state = initialState, action) {
       };
     }
     case "admin/adminSignOut": {
-      localStorage.removeItem('admin_token')
-      setAuthToken(null)
+      localStorage.removeItem("admin_token");
+      setAuthToken(null);
       return {
         ...state,
         adminData: null,
@@ -54,7 +54,6 @@ export default function adminReducer(state = initialState, action) {
       return state;
   }
 }
-
 
 //action creators
 export const adminLoading = () => ({ type: "admin/adminLoading" });
@@ -76,43 +75,41 @@ export const adminSignOut = () => ({ type: "admin/adminSignOut" });
 
 //#1. fetch admin based on token
 export const fetchAdmin = () => async (dispatch) => {
-    dispatch(adminLoading());
-    axios
-      .get("/admin")
-      .then((res) => {
-        dispatch(adminFetched(res.data));
-      })
-      .catch((err) => {
-        if (err.response) {
-          dispatch(adminError(err.response.data));
-        }
-        console.log(err.response);
-      });
-  };
+  dispatch(adminLoading());
+  axios
+    .get("/admin")
+    .then((res) => {
+      dispatch(adminFetched(res.data));
+    })
+    .catch((err) => {
+      if (err.response) {
+        dispatch(adminError(err.response.data));
+      }
+      console.log(err.response);
+    });
+};
 
-  //#2.Admin sign in
-  
+//#2.Admin sign in
+
 export const adminSignIn = (adminData) => async (dispatch) => {
-    dispatch(adminSigningIn());
-  
-    axios
-      .post("/admin/login", adminData)
-      .then((res) => {
-        localStorage.setItem("admin_token", res.data);
-        setAuthToken(res.data);
-        dispatch(adminSignedIn());
-        dispatch(fetchAdmin())
-      })
-      .catch((err) => {
-        if (err.response) {
-          dispatch(adminError(err.response.data));
-        }
-        console.log('err:',err);
-      });
-  };
+  dispatch(adminSigningIn());
 
+  axios
+    .post("/admin/login", adminData)
+    .then((res) => {
+      localStorage.setItem("admin_token", res.data);
+      setAuthToken(res.data);
+      dispatch(adminSignedIn());
+      dispatch(fetchAdmin());
+    })
+    .catch((err) => {
+      if (err.response) {
+        dispatch(adminError(err.response.data));
+      }
+      console.log("err:", err);
+    });
+};
 
-  
-//custom selectors 
+//custom selectors
 
-export const selectAdminData=state=>state.admin.adminData
+export const selectAdminData = (state) => state.admin.adminData;
